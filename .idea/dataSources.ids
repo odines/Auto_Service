@@ -7,5 +7,35 @@
     </database-info>
     <case-sensitivity plain-identifiers="lower" quoted-identifiers="lower"/>
     <schema name="" catalog="auto_service"/>
+    <table name="cars" schema="" catalog="auto_service" type="TABLE">
+      <column name="id_car" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="make" sqlType="VARCHAR" precision="30" scale="0" nullable="false" jdbcType="12"/>
+      <column name="model" sqlType="VARCHAR" precision="30" scale="0" nullable="false" jdbcType="12"/>
+      <column name="year" sqlType="VARCHAR" precision="30" scale="0" nullable="false" jdbcType="12"/>
+      <column name="vin" sqlType="VARCHAR" precision="100" scale="0" nullable="false" jdbcType="12"/>
+      <column name="id_client" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <primary-key name="PRIMARY" columns="id_car"/>
+      <foreign-key name="cars_ibfk_1" columns="id_client" ref-table="clients" ref-schema="" ref-catalog="auto_service" ref-columns="id_client" update-rule="3" delete-rule="0" deferrability="2"/>
+      <exported-key name="orders_ibfk_1" table="orders" schema="" catalog="auto_service" columns="id_car"/>
+    </table>
+    <table name="clients" schema="" catalog="auto_service" type="TABLE">
+      <column name="id_client" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="first_name" sqlType="VARCHAR" precision="100" scale="0" nullable="true" jdbcType="12"/>
+      <column name="last_name" sqlType="VARCHAR" precision="100" scale="0" nullable="true" jdbcType="12"/>
+      <column name="date_birth" sqlType="VARCHAR" precision="15" scale="0" nullable="true" jdbcType="12"/>
+      <column name="address" sqlType="VARCHAR" precision="100" scale="0" nullable="true" jdbcType="12"/>
+      <column name="phone" sqlType="VARCHAR" precision="20" scale="0" nullable="true" jdbcType="12"/>
+      <column name="email" sqlType="VARCHAR" precision="50" scale="0" nullable="true" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="id_client"/>
+      <exported-key name="cars_ibfk_1" table="cars" schema="" catalog="auto_service" columns="id_client"/>
+    </table>
+    <table name="orders" schema="" catalog="auto_service" type="TABLE">
+      <column name="id_order" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="amount" sqlType="VARCHAR" precision="50" scale="0" nullable="false" jdbcType="12"/>
+      <column name="order_status" sqlType="VARCHAR" precision="50" scale="0" nullable="false" jdbcType="12"/>
+      <column name="id_car" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <primary-key name="PRIMARY" columns="id_order"/>
+      <foreign-key name="orders_ibfk_1" columns="id_car" ref-table="cars" ref-schema="" ref-catalog="auto_service" ref-columns="id_car" update-rule="3" delete-rule="0" deferrability="2"/>
+    </table>
   </data-source>
 </component>

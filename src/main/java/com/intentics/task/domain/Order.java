@@ -6,7 +6,7 @@ import javax.persistence.*;
 import java.io.Serializable;
 
 @Entity
-@Table(name = "Orders")
+@Table(name = "orders")
 public class Order implements Serializable {
     private Integer id;
     private String amount;
@@ -15,7 +15,16 @@ public class Order implements Serializable {
 
     Order() {
     }
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id_order")
+    public Integer getId() {
+        return id;
+    }
 
+    public void setId(Integer id) {
+        this.id = id;
+    }
     @Column(name = "amount")
     public String getAmount() {
         return amount;

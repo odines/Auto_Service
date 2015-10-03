@@ -3,28 +3,25 @@ package com.intentics.task.web;
 import com.intentics.task.service.IClientService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 public class MainController {
 
     @Autowired
     IClientService clientService;
-    @RequestMapping("/index")
-    public String listClients(Model model) {
+    @RequestMapping(value = "client", method = RequestMethod.GET)
+    public ModelAndView helloWorld(){
 
-        model.addAttribute("user", "lalka");
-        /*
-        model.addAttribute("client", new Client());
+        ModelAndView model = new ModelAndView("client");
+        model.addObject("msg", "hello world");
 
-        map.put("client", new Client());
-        map.put("clientList", clientService.getAllClients());
-        */
-        return "client";
+        return model;
     }
     @RequestMapping("/")
     public String home(){
-        return "redirect:/index";
+        return "redirect:client";
     }
 }

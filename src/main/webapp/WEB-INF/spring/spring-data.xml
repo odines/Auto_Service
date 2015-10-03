@@ -10,6 +10,7 @@
     <jpa:repositories base-package="com.intentics.task.DAO"/>
 
 
+
     <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
         <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
         <property name="url" value="jdbc:mysql://localhost:3306/auto_service"/>
@@ -29,12 +30,7 @@
         <property name="jpaVendorAdapter" ref="jpaVendorAdapter"/>
         <!-- spring based scanning for entity classes-->
         <property name="packagesToScan" value="com.intentics.task.domain"/>
-        <property name="jpaProperties">
-            <props>
-                <prop key="hibernate.hbm2ddl.auto">create-drop</prop>
-            </props>
 
-        </property>
     </bean>
 
     <bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager"/>

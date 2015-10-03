@@ -8,6 +8,6 @@ import org.springframework.data.repository.query.Param;
 
 public interface IClientDAO extends JpaRepository<Client, Integer> {
 
-    @Query("select b from Client b where b.first_name = :first_name and b.last_name = :last_name")
+    @Query("select b from Client b where b.firstName = :first_name and b.lastName = :last_name")
     Client findByNameSurname(@Param("first_name") String firstName, @Param("last_name") String secondName);
 }

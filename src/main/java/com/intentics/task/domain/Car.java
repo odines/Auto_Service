@@ -2,10 +2,10 @@ package com.intentics.task.domain;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.List;
+import java.util.Collection;
 
 @Entity
-@Table(name = "Cars")
+@Table(name = "cars")
 public class Car implements Serializable {
     private Integer id;
     private String make;
@@ -13,7 +13,10 @@ public class Car implements Serializable {
     private Integer year;
     private String vin;
 
-    List<Order> orders;
+
+    Collection<Order> orders;
+
+
     private Client client;
 
     public Car() {
@@ -66,12 +69,12 @@ public class Car implements Serializable {
         this.vin = vin;
     }
 
-    @OneToMany(fetch = FetchType.EAGER, mappedBy = "Orders")
-    public List<Order> getOrders() {
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "car")
+    public Collection<Order> getOrders() {
         return orders;
     }
 
-    public void setOrders(List<Order> orders) {
+    public void setOrders(Collection<Order> orders) {
         this.orders = orders;
     }
 
