@@ -23,8 +23,8 @@ public class ClientServiceImpl implements IClientService {
 
     @Override
     public Client getClientById(Integer id) {
-        Client client = clientDAO.findOne(id);
-        return client;
+
+        return clientDAO.findOne(id);
     }
 
     @Override

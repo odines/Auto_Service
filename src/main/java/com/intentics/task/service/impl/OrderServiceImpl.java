@@ -16,8 +16,7 @@ public class OrderServiceImpl implements IOrderService {
 
     @Override
     public Order addOrder(Order order) {
-        Order savedOrder = orderDAO.saveAndFlush(order);
-        return savedOrder;
+        return orderDAO.saveAndFlush(order);
     }
 
     @Override

@@ -15,8 +15,8 @@ public class CarServiceImpl implements ICarService {
 
     @Override
     public Car addCar(Car car) {
-        Car savedCar = carDAO.saveAndFlush(car);
-        return savedCar;
+
+        return carDAO.saveAndFlush(car);
     }
 
     @Override
