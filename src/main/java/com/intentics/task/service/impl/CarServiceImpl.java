@@ -38,5 +38,10 @@ public class CarServiceImpl implements ICarService {
         return carDAO.findAll();
     }
 
+    @Override
+    public Car getCarById(Integer id) {
+        return carDAO.findOne(id);
+    }
+
 
 }

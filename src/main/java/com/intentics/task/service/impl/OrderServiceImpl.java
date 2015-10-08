@@ -4,9 +4,11 @@ import com.intentics.task.DAO.IOrderDAO;
 import com.intentics.task.domain.Order;
 import com.intentics.task.service.IOrderService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public class OrderServiceImpl implements IOrderService {
 
     @Autowired
@@ -33,5 +35,10 @@ public class OrderServiceImpl implements IOrderService {
     @Override
     public List<Order> getAllOrders() {
         return orderDAO.findAll();
+    }
+
+    @Override
+    public Order getOrderById(Integer id) {
+        return orderDAO.findOne(id);
     }
 }

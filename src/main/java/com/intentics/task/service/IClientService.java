@@ -7,10 +7,15 @@ import java.util.List;
 public interface IClientService {
 
     Client addClient(Client client);
+
     Client getClientById(Integer id);
+
     void deleteClient(Integer id);
-    Client editClient (Client client);
-    Client getClientByNameSurname (String firstName, String lastName);
-    List<Client> getAllClients ();
+
+    Client editClient(Client client);
+
+    Client getClientByNameSurname(String firstName, String lastName);
+
+    List<Client> getAllClients();
 
 }

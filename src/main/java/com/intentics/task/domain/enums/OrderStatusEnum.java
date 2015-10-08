@@ -1,9 +1,18 @@
 package com.intentics.task.domain.enums;
 
-public enum OrderStatusEnum {
-    COMPLETED,
-    IN_PROGRESS,
-    CANCELLED;
+public  enum OrderStatusEnum {
 
-    OrderStatusEnum(){}
+    COMPLETED("Completed"),
+    IN_PROGRESS("In Progress"),
+    CANCELLED("Cancelled");
+
+    private String description;
+
+    OrderStatusEnum(String description){
+        this.description = description;
+    }
+
+     public String getDescription(){
+        return description;
+    }
 }

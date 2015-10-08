@@ -1,6 +1,8 @@
 package com.intentics.task.domain;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.io.Serializable;
 import java.util.Collection;
 
@@ -8,7 +10,7 @@ import java.util.Collection;
 @Table(name = "clients")
 public class Client implements Serializable {
 
-    private Integer id;
+    private Integer idClient;
     private String firstName;
     private String lastName;
     private String dateBirth;
@@ -23,16 +25,18 @@ public class Client implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_client")
-    public Integer getId() {
-        return id;
+    @Column(name = "idClient")
+    public Integer getIdClient() {
+        return idClient;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public void setIdClient(Integer idClient) {
+        this.idClient = idClient;
     }
 
-    @Column(name = "first_name")
+    @Column(name = "firstName")
+    @NotNull
+    @Size(min = 2, max = 30, message = "Length must be between 2 and 80")
     public String getFirstName() {
         return firstName;
     }
@@ -41,7 +45,9 @@ public class Client implements Serializable {
         this.firstName = firstName;
     }
 
-    @Column(name = "last_name")
+    @NotNull
+    @Size(min = 2, max = 30, message = "Length must be between 2 and 80")
+    @Column(name = "lastName")
     public String getLastName() {
         return lastName;
     }
@@ -50,7 +56,9 @@ public class Client implements Serializable {
         this.lastName = lastName;
     }
 
-    @Column(name = "date_birth")
+    @NotNull
+    @Size(min = 2, max = 20, message = "Length must be between 2 and 20")
+    @Column(name = "dateBirth")
     public String getDateBirth() {
         return dateBirth;
     }
@@ -59,6 +67,8 @@ public class Client implements Serializable {
         this.dateBirth = dateBirth;
     }
 
+    @NotNull
+    @Size(min = 2, max = 30, message = "Length must be between 2 and 30")
     @Column(name = "address")
     public String getAddress() {
         return address;
@@ -68,6 +78,8 @@ public class Client implements Serializable {
         this.address = address;
     }
 
+    @NotNull
+    @Size(min = 2, max = 30, message = "Length must be between 2 and 40")
     @Column(name = "phone")
     public String getPhone() {
         return phone;
@@ -77,6 +89,8 @@ public class Client implements Serializable {
         this.phone = phone;
     }
 
+    @NotNull
+    @Size(min = 2, max = 30, message = "Length must be between 2 and 30")
     @Column(name = "email")
     public String getEmail() {
         return email;

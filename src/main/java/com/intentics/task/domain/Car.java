@@ -1,20 +1,21 @@
 package com.intentics.task.domain;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.io.Serializable;
 import java.util.Collection;
 
 @Entity
 @Table(name = "cars")
 public class Car implements Serializable {
-    private Integer id;
+    private Integer idCar;
     private String make;
     private String model;
-    private Integer year;
+    private Integer yearCar;
     private String vin;
 
-
-    Collection<Order> orders;
+    private Collection<Order> orders;
 
 
     private Client client;
@@ -24,15 +25,17 @@ public class Car implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_car")
-    public Integer getId() {
-        return id;
+    @Column(name = "idCar")
+    public Integer getIdCar() {
+        return idCar;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public void setIdCar(Integer idCar) {
+        this.idCar = idCar;
     }
 
+    @NotNull
+    @Size(min = 2, max = 30, message = "Length must be between 2 and 20")
     @Column(name = "make")
     public String getMake() {
         return make;
@@ -42,6 +45,8 @@ public class Car implements Serializable {
         this.make = make;
     }
 
+    @NotNull
+    @Size(min = 2, max = 30, message = "Length must be between 2 and 20")
     @Column(name = "model")
     public String getModel() {
         return model;
@@ -51,16 +56,18 @@ public class Car implements Serializable {
         this.model = model;
     }
 
-    @Column(name = "year")
-    public Integer getYear() {
-        return year;
+    @NotNull(message = "length cannot be null")
+    @Column(name = "yearCar")
+    public Integer getYearCar() {
+        return yearCar;
     }
 
-    public void setYear(Integer year) {
-        this.year = year;
+    public void setYearCar(Integer yearCar) {
+        this.yearCar = yearCar;
     }
 
     @Column(name = "vin")
+    @Size(min = 5, max = 30, message = "Length must be between 5 and 30")
     public String getVin() {
         return vin;
     }
@@ -79,7 +86,7 @@ public class Car implements Serializable {
     }
 
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "id_client", nullable = false)
+    @JoinColumn(name = "idClient", nullable = false)
     public Client getClient() {
         return client;
     }
